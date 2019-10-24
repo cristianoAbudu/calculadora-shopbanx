@@ -21,9 +21,13 @@ function calculaSomaTaxasPagina(pagina){
 }
 
 function calculaTaxaMinimaPagina(pagina, proximaPagina){
-    var somaTaxasPaginaAtual = calculaSomaTaxasPagina(pagina);
+    var somaTaxasPaginaAtual = 0;
+    var taxaMinimaPorPagina = 0;
 
-    var taxaMinimaPorPagina = taxaMinima * camposPagina[pagina].length;
+    for(i=0; i<=pagina; i++){
+        somaTaxasPaginaAtual += calculaSomaTaxasPagina(i);
+        taxaMinimaPorPagina += taxaMinima * camposPagina[i].length;
+    }
 
     var diferenca = taxaMinimaPorPagina - somaTaxasPaginaAtual;
 
